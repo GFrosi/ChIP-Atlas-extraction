@@ -43,3 +43,14 @@ Get exclusive ChIP-Atlas SRX
 
 python count_srx_geo_chipatlas.py geo_metadata.csv experimentList.tsv
 ```
+
+
+## get_hg19_hg38.py
+
+### Usage
+
+```
+Check if each sample has a bigwig for each assembly (hg38 and hg19). These information it will be added into new columns in the final dataframe.
+
+python get_hg19_hg38.py experimentList_stand.tsv GEodiff_nodiff_2021_merged_histones_EpiLaP.tsv output.tsv
+```
