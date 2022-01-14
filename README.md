@@ -91,3 +91,20 @@ optional arguments:
   -h, --help            show this help message and exit
   -p PATH, --path PATH  Absolute path to the .sh dir
   ```
+
+
+  # Get cctrol cell line dir - script to find possible(s) control for an IP sample searching for the same cell line.
+
+```
+usage: get_cellline.py [-h] -f FILE -d DATAFRAME -o OUT
+
+a script to select inputs related with the same cell line
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -f FILE, --file FILE  list of SRX of interest
+  -d DATAFRAME, --dataframe DATAFRAME
+                        ChIP-Atlas metadata filtered by Homo sapiens
+  -o OUT, --out OUT     Path to save the csv file
+
+  ``` 
