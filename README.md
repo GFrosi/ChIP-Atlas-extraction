@@ -108,3 +108,21 @@ optional arguments:
   -o OUT, --out OUT     Path to save the csv file
 
   ``` 
+
+  # writer_json
+
+```
+Hint: You shoud to forward the output to your .json file. 
+Example: python write_json_CA.py -m CA_metadata.csv -s srx.txt > metadata.json
+
+usage: writer_json_CA.py [-h] -m METADATA -s SRX
+
+A scrip to print a json file for EpiLaP/epiGeEC from the ChIP-Atlas metadata
+information
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -m METADATA, --metadata METADATA
+                        path to ChIP-Atlas metadata file (csv)
+  -s SRX, --srx SRX     path to SRX txt file
+  ```
