@@ -82,15 +82,16 @@ def wbs_gsm_gep(df, n, path):
 
         except ConnectionAbortedError as cae:
             print(f"Error {cae}. You shold restart the program adding the argument --num={index}, srx:{i}. Also, you should use the argument --concat True")
-            logger.error(cae + ". You shold restart the program adding the argument --num=" + index + "Also, you should use the argument --concat True")
+            logger.error("Connection Aborted Error. You shold restart the program adding the argument --num=" + str(index) + "Also, you should use the argument --concat True")
             sys.exit(1)
         
         except ConnectionRefusedError as cre:
             print(f"Error {cre}. Index:{index}, srx: {i}. You maybe was added to a blacklist. Try to run the script adding --num={index}. Also, you should use the argument --concat True" )
-            logger.error(cre + ". You maybe was added to a blacklist. Try to run the script adding --num=" + index + "Also, you should use the argument --concat True")
+            logger.error("Connection Refused Error. You maybe was added to a blacklist. Try to run the script adding --num=" + str(index) + "Also, you should use the argument --concat True")
             sys.exit(1)
     
     print("Requests finished!")
+
     return list_srx_null, list_gsm
 
 
@@ -133,15 +134,15 @@ def concat_txt(path):
     return list_srx_c, list_gsm_c
 
 
-def main(): ##add argparse
+def main():
 
     logger.info("Starting program!")
 
-    df_ca = pd.read_csv(args.df) #df containing 
+    df_ca = pd.read_csv(args.df) #df containing at least GSM and SRX (Experimental_ID) columns 
 
     if args.concat:
         logger.info("Running concat function to generate the final df")
-        list_srx_c, list_gsm_c = concat_txt(args.write_out) #generate list of srx and gsm and call df_final function
+        list_srx_c, list_gsm_c = concat_txt(args.write_out) #generate list of srx and gsm, and call df_final function
         df_final = map_gsm(list_srx_c, list_gsm_c, df_ca)
         df_final.to_csv(args.output, index=False)
         logger.info("Final dataframe generated via concat function saved successfully!")
