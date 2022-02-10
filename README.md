@@ -126,3 +126,30 @@ optional arguments:
                         path to ChIP-Atlas metadata file (csv)
   -s SRX, --srx SRX     path to SRX txt file
   ```
+
+# Extract GSM
+
+```
+Hint: You should create a output directory to receive the txt file(s) that will be generated during the process
+
+
+A script to recover the GSM IDs related with the SRX IDs.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -d DF, --df DF        The absolute path to the csv file with the metadata
+                        information containing at least the GSM and SRX
+                        columns
+  -n NUM, --num NUM     The index number from the list of SRX if necessary to
+                        run the script again starting by a specific SRX
+  -c CONCAT, --concat CONCAT
+                        The absolute path to the txt files generated in the
+                        previous run to be concatenated and mapped into a
+                        final df
+  -w WRITE_OUT, --write_out WRITE_OUT
+                        The absolute path to save the txt file if needed
+  -o OUTPUT, --output OUTPUT
+                        The absolute path to save the final df
+
+
+```
