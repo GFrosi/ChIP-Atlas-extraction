@@ -95,7 +95,7 @@ if __name__ == "__main__":
 
 
     parser = argparse.ArgumentParser(
-        description="A scrip to print a json file for EpiLaP/epiGeEC from the ChIP-Atlas metadata information"
+        description="A script to print a json file for EpiLaP/epiGeEC from the ChIP-Atlas metadata information"
     )
 
     parser.add_argument('-m', '--metadata', action="store",
