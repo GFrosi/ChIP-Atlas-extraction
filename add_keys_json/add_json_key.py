@@ -34,17 +34,17 @@ def get_keys(df_ca, merged_json, Sex, Cell_line, Biomaterial_type, Donor_health_
     for dset in tqdm(ca_js['datasets']):
         
         if dset['md5sum'].split('-')[0] in dict_sex.keys(): # all dicts have the same length (keys from SRX col)
-            dset['sex'] = dict_sex[dset['md5sum'].split('-')[0]]
-            dset['cell_line'] = dict_cell_line[dset['md5sum'].split('-')[0]]
-            dset['biomaterial_type'] = dict_biomaterial[dset['md5sum'].split('-')[0]]  
-            dset['health_status'] = dict_health[dset['md5sum'].split('-')[0]]  
+            dset['sex'] = str(dict_sex[dset['md5sum'].split('-')[0]]).lower()
+            dset['cell_line'] = str(dict_cell_line[dset['md5sum'].split('-')[0]]).lower()
+            dset['biomaterial_type'] = str(dict_biomaterial[dset['md5sum'].split('-')[0]]).lower()  
+            dset['health_status'] = str(dict_health[dset['md5sum'].split('-')[0]]).lower()  
             list_dset.append(dset)
              
         else:
-            dset['cell_line'] = '----'
-            dset['sex'] = '----'
-            dset['biomaterial_type'] = '----'
-            dset['health_status'] = '----'
+            dset['cell_line'] = ''
+            dset['sex'] = ''
+            dset['biomaterial_type'] = ''
+            dset['health_status'] = ''
             list_dset.append(dset)
             
     return list_dset

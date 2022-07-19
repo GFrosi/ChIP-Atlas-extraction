@@ -1,7 +1,7 @@
 import pandas as pd
 import sys
 from tqdm import tqdm
-
+from datetime import datetime
 
 
 
@@ -67,21 +67,23 @@ def get_hg38(df):
 def main():
 
     print('Starting script...')
-    df_ca = pd.read_csv(sys.argv[1], sep='\t') #load experimentList_stand_2022_newcols.tsv
+    df_ca = pd.read_csv(sys.argv[1], sep='\t') #load experimentList_stand_2022.tsv
     df_geo = pd.read_csv(sys.argv[2]) #load GEO 79k csv file
     df_gsm_extracted = pd.read_csv(sys.argv[3], names=['SRX', 'GSM']) #load write_out/test_0_2021.txt (ChIP-Atlas folder HPC)
     df_pred = pd.read_csv(sys.argv[4]) #test_predict_max_complete.csv (project folder - C-A-EpiLaP total)
     
+    date = datetime.now().strftime("%Y_%m_%d")
+ 
     #Generating dfs of interest
     df_hg38_chip = hg38_chipseq(df_ca) #59805 - Ok
     print('Saving CA_hg38_2022_filter_antigenclass.csv file...')
-    # df_hg38_chip.to_csv(CA_hg38_2022_filter_antigenclass.csv, index=False) #path to save the filtered C-A hs ChIP-Seq
+    df_hg38_chip.to_csv('CA_hg38_2022_filter_antigenclass_'+ date + '.csv', index=False) #path to save the filtered C-A hs ChIP-Seq
     print('Saving C-A_hg38_Hs_GSM_GSE_2022_antigenclass...')
     df_merge = merge_hg38_chip_GEO(df_hg38_chip, df_geo, df_gsm_extracted)
-    # df_merge.to_csv('CA_hg38_Hs_GSM_GSE_2022_antigenclass.csv', index=False)
+    df_merge.to_csv('CA_hg38_Hs_GSM_GSE_2022_antigenclass_'+ date + '.csv', index=False)
     df_histone_pred = get_histones(df_merge, df_pred, 'Antigen', 'GSE')
     print('Saving Histone_CA_2021-2022_06-07.csv...')
-    # df_histone_pred.to_csv('Histone_CA_2021-2022_06-07.csv', index=False)
+    df_histone_pred.to_csv('Histone_CA_'+ date + '.csv', index=False)
     print('All dfs of interest were saved!')
 
     
