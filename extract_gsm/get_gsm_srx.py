@@ -29,6 +29,7 @@ def get_isnull_gsm(df):
     of SRX for samples without GSM
     info.
     """
+    
 
     df_gsm_null = df[df['GSM'].isnull()]
     list_srx_null = df_gsm_null['Experimental_ID'].tolist()
