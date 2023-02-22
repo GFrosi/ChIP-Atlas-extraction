@@ -1,0 +1,107 @@
+﻿All_metadata_cols,Category
+health state,donor_health_status
+line name,cell_line
+human donor,donor_id
+AGE,age
+timestamp age,age
+Tissue,tissue_type
+tissue type,tissue_type
+lineage,cell_line
+tissue compartment,tissue_type
+tissue/cells,tissue_type
+age and sex,age
+cell line type,cell_line
+donor sex,sex
+lines,cell_line
+cell line/clone,cell_line
+donorid,donor_id
+tissue source/type,tissue_type
+cell line source gender,sex
+biological replicate number,donor_id
+BIOMATERIAL_TYPE,biomaterial_type
+cell line origin,cell_line
+cell lin,cell_line
+sample id,donor_id
+disease,disease
+clinical status,donor_health_status
+patient gender,sex
+cell_line/tissue,cell_line
+DONOR_HEALTH_STATUS,donor_health_status
+individual id,donor_id
+sample_id,donor_id
+TISSUE_TYPE,tissue_type
+LINE,cell_line
+sex type,sex
+cell ine,cell_line
+cell line,cell_line
+SEX,sex
+GENDER,sex
+tiisue,tissue_type
+cell_line,cell_line
+SAMPLE_ONTOLOGY_URI,sample_ontology_uri
+embryonic age,age
+tissue,tissue_type
+ORIGIN_SAMPLE_ONTOLOGY_URI,origin_sample_ontology_uri
+donor,donor_id
+health_state,donor_health_status
+donor number,donor_id
+DONOR_ID,donor_id
+tissue/cell type,tissue_type
+disease state,disease
+cell line name,cell_line
+disease type,disease
+strain/cell line,cell_line
+tissue-type,tissue_type
+health status,donor_health_status
+cell-line,cell_line
+line,cell_line
+donor name,donor_id
+cell or tissue type,cell_line
+sampleID,donor_id
+DONOR_AGE,age
+disease state,disease
+CellLine,cell_line
+Sex,sex
+tissue_type,tissue_type
+SRA accession,sra
+tisssue,tissue_type
+cell line source,cell_line
+patient id,donor_id
+cell line,cell_line
+tissuetype,tissue_type
+donor_id,donor_id
+tissue/cell,tissue_type
+patient sex,sex
+DISEASE_ONTOLOGY_URI,disease_ontology_uri
+Cell line,cell_line
+cell _line_name,cell_line
+donor ID,donor_id
+cell line/genotype,cell_line
+disease_state,disease
+celline,cell_line
+DONOR_SEX,sex
+Age,age
+cell line/strain,cell_line
+cell line/tissue,cell_line
+cell sex,sex
+ORIGIN_SAMPLE,tissue_type
+DONOR_HEALTH_STATUS_ONTOLOGY_URI,donor_health_status_ontology_uri
+donor_code,donor_id
+donor age,age
+disease ontology uri,disease_ontology_uri
+subject id,donor_id
+cell lines,cell_line
+donor gender,sex
+tisue,tissue_type
+donor apparent sex,sex
+pathology/age,disease
+age description,age
+cell line description,cell_line
+DISEASE,disease
+celll line,cell_line
+age,age
+donor_type,disease
+disease at diagnosis,disease
+biomaterial_type,biomaterial_type
+cell linw,cell_line
+cell line/type,cell_line

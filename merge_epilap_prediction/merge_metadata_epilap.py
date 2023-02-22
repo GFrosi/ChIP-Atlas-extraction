@@ -20,8 +20,13 @@ def histones_ca_2022_pred(df_ca_hist):
         name = df.split('_')[-1].split('.')[0] #getting the model type (sex, bio, assay...)
         name_df = 'df'+name
         df_1 = pd.read_csv(df)
-        name_df = create_srx_col(df_1) #generating sample columns to merge dfs
-        list_df.append(name_df)
+
+        if 'md5sum' in df_1.columns:
+            name_df = create_srx_col(df_1) #generating sample columns to merge dfs
+            list_df.append(name_df)
+        else:
+            name_df = df_1
+            list_df.append(name_df)
     
     #merging all dfs
     df_merge = reduce(lambda left,rigth: pd.merge(left,rigth, on='Sample',how='left'), list_df)

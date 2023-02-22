@@ -1,6 +1,7 @@
 import pandas as pd
 import sys
 from tqdm import tqdm
+from datetime import datetime
 
 
 
@@ -9,22 +10,25 @@ def create_df_donor_id_count(df_ca):
     df containing GSE, number of GSM and 
     number of donor_id"""
 
+    date = datetime.now().strftime("%Y_%m_%d")
     big_list = get_rep(df_ca)
     df = pd.DataFrame(big_list, columns=['GSE', 'donor_id_count', 'gsm_count'])
     
     df_final = df_ca.merge(df, how='left', on='GSE')
 
     #saving dfs
-    df.to_csv('C-A_rep_bio_C-A_2022_07_19.csv', index=False)
-    df_final.to_csv('C-A_2021-2022_predictions_2022_07_19_rep_bio_gsm.csv', index=False)
+    df.to_csv("C-A_bio_"+date+ ".csv", index=False)
+    df_final.to_csv("C-A_2021-2022_predictions"+date+"_rep_bio_gsm.csv", index=False)
 
 
 def get_rep(df_ca):
-    """Recieves a df containing a GSE
-    column. Return a big list the number
-    of bio replicates and GSM per GSE"""
+    """Receives a df containing a GSE
+    column. Return a big list including 
+    the number of bio replicates and GSM
+    per GSE"""
 
     gse_list = sorted(list(set(df_ca['GSE'].dropna().astype(str))))
+    print(len(gse_list))
     print(f'Your df has {len(gse_list)} GSEs to be analyzed.')
    
     big_list = []
@@ -73,7 +77,7 @@ def get_rep(df_ca):
 def main():
 
     print('Starting script...')
-
+    
     df_ca = pd.read_csv(sys.argv[1]) #C-A csv file (e.g CA_hg38_Hs_GSM_GSE), 
     create_df_donor_id_count(df_ca)
 
