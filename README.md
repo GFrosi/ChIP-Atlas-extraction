@@ -204,22 +204,14 @@ optional arguments:
 
   ``` 
 
-  # writer_json
+  # writer_json - C-A_json_EpiClass.py
 
 ```
-Hint: You shoud to forward the output to your .json file. 
-Example: python write_json_CA.py -m CA_metadata.csv -s srx.txt > metadata.json
 
-usage: writer_json_CA.py [-h] -m METADATA -s SRX
+usage: C-A_json_EpiClass.py Histone-C-A.csv C-A_hg38_final.json
 
-A scrip to print a json file for EpiLaP/epiGeEC from the ChIP-Atlas metadata
-information
+A scrip to generate a json file for EpiClass - predictions from the ChIP-Atlas metadata csv file. The first argument is the metadata csv, the second is the output json name.
 
-optional arguments:
-  -h, --help            show this help message and exit
-  -m METADATA, --metadata METADATA
-                        path to ChIP-Atlas metadata file (csv)
-  -s SRX, --srx SRX     path to SRX txt file
   ```
 
 
