@@ -41,7 +41,30 @@ def get_histones(df_merge, df_pred, col_target, col_gse):
     
     return df_hist_input.merge(df_pred, how='left', on='Sample') #merge all pred results
 
+
+
+def extract_gsm_from_title(df_merge):
+    """Receives the df_merged from function bellow.
+    Extracts the GSM info from Title column
+    if the GSM info for a specific SRX is empty, 
+    and fill the GSM column.
+    """
+
+    # print('No fill:',df_merge)
+    df_merged_filter = df_merge[~df_merge['GSM'].astype(str).str.contains('GSM')]
+    df_merged_filter_title = df_merged_filter[df_merged_filter['Title'].str.contains(pat = 'GSM[0-9]+', regex = True)]
+    # print(df_merged_filter_title['Title'])
+    # sys.exit()
+
+    dict_srx_gsm = df_merged_filter_title.set_index('Experimental_ID').to_dict()['Title']
+    dict_to_map = {k: v.split(':')[0] for k, v in dict_srx_gsm.items()}
     
+    df_merge['GSM'] = df_merge['Experimental_ID'].map(dict_to_map).fillna(df_merge['GSM'])
+
+    return df_merge
+
+
+
 
 def merge_hg38_chip_GEO(df_hg38_chip, df_geo, df_gsm_extracted):
     """Receives three dfs, C-A, GEO and a df 
@@ -95,7 +118,9 @@ def main():
     
     print('Saving C-A_hg38_Hs_GSM_GSE_2023_antigenclass...')
     df_merge = merge_hg38_chip_GEO(df_hg38_chip, df_geo, df_gsm_extracted)
+    df_merge = extract_gsm_from_title(df_merge) #filling GSM column using info extracted from Title column (C-A)
     df_merge.to_csv('CA_hg38_Hs_GSM_GSE_antigenclass_'+ date + '.csv', index=False)
+
     df_histone_pred = get_histones(df_merge, df_pred, 'Antigen', 'GSE')
     
     print('Saving df containing histone samples from GSEs with at least one input sample: Histone_CA.csv...')
@@ -103,7 +128,8 @@ def main():
 
 
     print('Generating and saving the Histones of interest + input + unclassified samples from C-A: ')
-    df_targets_ca = histones_ca_hg38(df_hg38_chip)
+    # df_targets_ca = histones_ca_hg38(df_hg38_chip) #use df_merge to include the GSM, GSE and SRX columns
+    df_targets_ca = histones_ca_hg38(df_merge) #use df_merge to include the GSM, GSE and SRX columns
     df_targets_ca.to_csv('Histone_input_unclassified_CA_'+date+'.csv', index=False)
 
     print('All dfs of interest were saved!')
